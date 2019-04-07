@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { School } from '../model/school';
-import { SchoolService } from '../services/school.service';
+import { SchoolService } from '../_shared_services/school.service';
 
 
 export interface State {

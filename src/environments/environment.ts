@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  config : {
+    apiKey: "AIzaSyCpiahtTpr4YfV4tTMGW-nS8y6koWnKUs8",
+    authDomain: "ultra-physics-235611.firebaseapp.com",
+    databaseURL: "https://ultra-physics-235611.firebaseio.com",
+    projectId: "ultra-physics-235611",
+    storageBucket: "ultra-physics-235611.appspot.com",
+    messagingSenderId: "459152254027"
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

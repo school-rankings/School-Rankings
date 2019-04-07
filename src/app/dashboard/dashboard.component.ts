@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { PagerService } from '../services/pager.service';
-import { SchoolService } from '../services/school.service';
+import { PagerService } from '../dashboard/pager.service';
+import { SchoolService } from '../_shared_services/school.service';
 import { School } from '../model/school';
 
 @Component({
@@ -29,21 +29,45 @@ export class DashboardComponent implements OnInit {
     pagedItems: any[];
 
     page = 1;
+    geolocationPosition: any;
 
     ngOnInit() {
-        this.getData();
+      if (window.navigator && window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(
+            position => {
+                this.geolocationPosition = position,
+                    console.log(position);
+this.getData(position.coords.latitude+','+position.coords.longitude);
+          
+            },
+            error => {
+                switch (error.code) {
+                    case 1:
+                        console.log('Permission Denied');
+                        break;
+                    case 2:
+                        console.log('Position Unavailable');
+                        break;
+                    case 3:
+                        console.log('Timeout');
+                        break;
+                }
+            }
+        );
+    };
+
+   
+        //this.getData();
     }
 
-    getData() {
-      this.http.get('http://localhost:8000/api/v1/schools')
-            .pipe(map((response: any) => response))
-            .subscribe((data: any) => {
-
+    getData(data) {
+      console.log('ENTERED!!!', data);
+      this.schoolService.getGeoLocSchools(data)
+            .subscribe(data => {
               console.log('Data: ', data);
-                // set items to json response
               this.allItems = data;
-              this.setPage(1);
-            });
+                this.setPage(1);
+            })
     }
 
     setPage(page: number) {

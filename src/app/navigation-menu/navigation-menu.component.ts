@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { AngularStickyThingsModule } from '../directives/angular-sticky-things.module';
+import { AngularStickyThingsModule } from '../directives/sticky-things/angular-sticky-things.module';
+import { AuthService } from '../auth/_services/auth.service';
 
 @NgModule({
   declarations: [
@@ -13,18 +14,28 @@ import { AngularStickyThingsModule } from '../directives/angular-sticky-things.m
 @Component({
   selector: 'app-navigation-menu',
   templateUrl: './navigation-menu.component.html',
-  styleUrls: ['./navigation-menu.component.css']
+  styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent implements OnInit {
 
+  isAuth: boolean= false;
+  navMenu: any;
 
-  navMenu: string[];
-
-  constructor() {
-    this.navMenu = ['Home', 'About Us', 'Contact'];
+  constructor(private auth: AuthService) {
+    this.navMenu = { 'home': 'Home', 'login':'Login'};
 
     }
 
     ngOnInit() {
+      console.log('Auth User: ', this.auth.user$.subscribe((res)=> {
+        if(res){
+          this.isAuth = true;
+        }
+      }));
+    }
+
+    signOut(){
+      console.log('Auth User: ', this.auth.user$);
+      this.auth.googleSignOut();
     }
 }

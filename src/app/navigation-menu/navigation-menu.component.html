@@ -1,33 +1,33 @@
-<header class="header_area" #boundary>
-        
-                <div #spacer1></div>
-                        <div stickyThing="" [spacer]="spacer1" [boundary]="boundary1">
-    <div class="container" >
-           
-        <nav class="navbar navbar-expand-lg navbar-light" >
-               
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand logo_h" href="index.html"><img src="/assets/image/nav-logo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse offset" id="navbarSupportedContent" >
-                   
-                <ul class="nav navbar-nav menu_nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" [routerLink]="['/']">Home</a></li> 
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['/about']">About us</a></li>
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['/contact']">Contact</a></li>
-                </ul>
-            </div> 
-            
-        </nav>
-        
-    </div>
-                        </div>
-</header>
+<header class="app-header navbar">
+  
+    <a class="navbar-brand" href="#" >
+      <img class="navbar-brand-full" src="/assets/image/school-header-logo.svg" height="55px">
+     </a>
+ 
+   
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+          <img class="img-avatar" src="/assets/image/blog/c1.jpg" alt="admin@bootstrapmaster.com">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-header text-center">
+            <strong>Account</strong>
+          </div>
+          <a *ngIf="!isAuth"class="dropdown-item" [routerLink]="['/login']">
+            <i class="fa fa-sign-in"></i> Login</a>          
+          <a *ngIf="isAuth" class="dropdown-item" href="#">
+            <i class="fa fa-user"></i> Profile</a>
+          <a *ngIf="isAuth" class="dropdown-item" href="#">
+            <i class="fa fa-wrench"></i> Settings</a> 
+          <a *ngIf="isAuth" class="dropdown-item" (click)= "signOut()">
+            <i class="fa fa-sign-out"></i> Logout</a>
+             
+        </div>
+      </li>
+    </ul>
+
+  </header>
 <!--================Header Area =================-->
 
 
