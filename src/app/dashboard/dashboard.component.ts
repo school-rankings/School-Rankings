@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
     geolocationPosition: any;
 
     ngOnInit() {
+<<<<<<< HEAD
       if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(
             position => {
@@ -64,6 +65,16 @@ this.getData(position.coords.latitude+','+position.coords.longitude);
       console.log('ENTERED!!!', data);
       this.schoolService.getGeoLocSchools(data)
             .subscribe(data => {
+=======
+        this.getData();
+    }
+
+    getData() {
+      this.http.get('http://localhost:8000/api/v1/schools')
+            .pipe(map((response: any) => response))
+            .subscribe((data: any) => {
+
+>>>>>>> origin/master
               console.log('Data: ', data);
               this.allItems = data;
                 this.setPage(1);
