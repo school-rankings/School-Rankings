@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable, OnInit } from '@angular/core';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,11 +12,13 @@ import { User } from '../../model/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit{
 
   user$: Observable<any>;
+  public returnUrl: string;
 
   constructor(private router: Router,
+    private route: ActivatedRoute,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore) {
 
@@ -32,10 +34,16 @@ export class AuthService {
       );
   }
 
+ngOnInit(){
+  
+
+}
+
   async googleSignIn() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
+    
   }
 
   async googleRegister(){
@@ -59,7 +67,14 @@ export class AuthService {
       displayName
     };
     
-    this.router.navigate(['/']);
+    if(this.returnUrl){
+      this.router.navigateByUrl(this.returnUrl);
+      this.returnUrl = null;
+    }
+    else{
+      this.router.navigateByUrl('/');
+    }
+
     return userRef.set(data, { merge: true });
 
   }

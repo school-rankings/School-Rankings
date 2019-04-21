@@ -17,6 +17,7 @@ export class PrePrimaryComponent implements OnInit, AfterContentInit {
   school: School;
   prePrimaryLocal: PrePrimary;
   remSeats: number;
+  prePrimary: boolean = true;
 
   public bar_ChartData = [];
   public pie_ChartData = [

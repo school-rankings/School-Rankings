@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 import { PagerService } from '../dashboard/pager.service';
 import { SchoolService } from '../_shared_services/school.service';
 import { School } from '../model/school';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +15,7 @@ import { School } from '../model/school';
 export class DashboardComponent implements OnInit {
 
   
-  constructor(private http: HttpClient, private pagerService: PagerService, private schoolService: SchoolService) { }
+  constructor(private http: HttpClient, private router: Router,private pagerService: PagerService, private schoolService: SchoolService) { }
 
     // array of all items to be paged
     private allItems = new Array();
@@ -84,6 +84,7 @@ this.getData(position.coords.latitude+','+position.coords.longitude);
       this.setPage(1);
     }
 
+    
 
   }
 

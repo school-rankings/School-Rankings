@@ -28,6 +28,7 @@ import { QuickStatsComponent } from './school-details/quick-stats/quick-stats.co
 import { SchoolTabsNavComponent } from './school-details/school-tabs-nav/school-tabs-nav.component';
 import { LoginComponent } from './login/login.component';
 import { LoginDirective } from './directives/login/login.directive';
+import { AuthGuard } from './auth/_guards/auth.guard';
 
 
 @NgModule({

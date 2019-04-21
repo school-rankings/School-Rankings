@@ -18,14 +18,14 @@
                   [ngClass]="(item?.school_admission_status=='Open')?'fa fa-thumbs-up': (item?.school_admission_status=='Close')?'fa fa-thumbs-down':'fa fa-exclamation-triangle'"></i>Admissions
                 {{item?.school_admission_status}}</span>
 
-              <div class="view-details"><a [routerLink]="['/school',item?._id]" class="genric-btn primary">Book Your
+              <div class="view-details"><a [routerLink]="['/school',item?._id]" [queryParams] = "{'city': item?.school_city, 'state': item?.school_state}" class="genric-btn primary">Book Your
                   Seat</a></div>
               <div class="calendar-small">
                 <span class="s-month">Rank</span>
                 <span class="s-date">{{item?.school_ranking}}</span>
               </div>
             </div>
-            <h5 class="event-title"><a [routerLink]="['/school',item?._id]">{{item?.school_name}}</a></h5>
+            <h5 class="event-title"><a [routerLink]="['/school',item?._id]" [queryParams] = "{'city': item?.school_city, 'state': item?.school_state}">{{item?.school_name}}</a></h5>
             <p>Pre-Primary | Primary | Middle | Secondary | Senior Secondary</p>
           </div> <!-- /.box-content-inner -->
         </div> <!-- /.list-event-item -->

@@ -6,7 +6,7 @@ import { School} from '../../model/school';
 @Component({
   selector: 'app-school-detail',
   templateUrl: './school-overview.component.html',
-  styleUrls: ['./school-overview.component.css']
+  styleUrls: ['./school-overview.component.scss']
 })
 
 

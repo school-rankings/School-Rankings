@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { School } from '../../model/school';
 
 @Component({
@@ -9,12 +9,16 @@ import { School } from '../../model/school';
 
 export class SchoolTabsNavComponent implements OnInit {
 
+  @Input() prePrimaryFlag: boolean;
   school: School;
   constructor() {
     
 this.school = JSON.parse(localStorage.getItem('school'));
+
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log('Flag: ',this.prePrimaryFlag);
+  }
 
 }

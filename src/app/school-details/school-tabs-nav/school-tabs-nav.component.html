@@ -6,7 +6,7 @@
                <a class="" [routerLink]="['/school',school?._id]">Overview</a>
                <ul class="side-nav-group has-children">
                   <li class="side-nav-item is-locked">
-                     <a *ngIf="school" class="" [routerLink]="['/school/pre-primary',school?.school_pre_primary_school_ref_id]">
+                     <a [ngClass]="prePrimaryFlag===undefined?'is-locked':''" [routerLink]="['/school/pre-primary',school?.school_pre_primary_school_ref_id]">
                         <span matBadgeColor="warn" matBadge="60" matBadgeOverlap="false"> Pre-Primary </span></a>
                   </li>
                   <li class="side-nav-item  is-locked">
@@ -18,7 +18,7 @@
                         <span matBadgeColor="cool" matBadge="0" matBadgeOverlap="false">Middle</span></a>
                   </li>
                   <li class="side-nav-item">
-                     <a class="" href=" ">
+                     <a class="is-locked" href=" ">
                         <span matBadgeColor="warn" matBadge="40" matBadgeOverlap="false">Secondary</span></a>
                   </li>
                   <li class="side-nav-item is-locked">
