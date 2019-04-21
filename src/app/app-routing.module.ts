@@ -8,6 +8,10 @@ import { SchoolOverviewComponent } from './school-details/school-overview/school
 import { PrePrimaryComponent } from './school-details/pre-primary/pre-primary.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/_guards/auth.guard';
+import { PrimaryComponent } from './school-details/primary/primary.component';
+import { MiddleComponent } from './school-details/middle/middle.component';
+import { SecondaryComponent } from './school-details/secondary/secondary.component';
+import { SeniorSecondaryComponent } from './school-details/senior-secondary/senior-secondary.component';
 
 const routes: Routes = [
   {
@@ -35,6 +39,46 @@ const routes: Routes = [
           {
             path: ':id',
             component: PrePrimaryComponent,
+            canActivate: [AuthGuard]
+          }
+        ]
+      },
+      {
+        path: 'primary',
+        children: [
+          {
+            path: ':id',
+            component: PrimaryComponent,
+            canActivate: [AuthGuard]
+          }
+        ]
+      },
+      {
+        path: 'middle',
+        children: [
+          {
+            path: ':id',
+            component: MiddleComponent,
+            canActivate: [AuthGuard]
+          }
+        ]
+      },
+      {
+        path: 'secondary',
+        children: [
+          {
+            path: ':id',
+            component: SecondaryComponent,
+            canActivate: [AuthGuard]
+          }
+        ]
+      },
+      {
+        path: 'senior-secondary',
+        children: [
+          {
+            path: ':id',
+            component: SeniorSecondaryComponent,
             canActivate: [AuthGuard]
           }
         ]

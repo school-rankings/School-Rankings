@@ -1,23 +1,23 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrePrimaryService } from '../_services/preprimary.service';
-import { PrePrimary } from '../../model/pre-primary';
+import { SecondaryService } from '../_services/secondary.service';
+import { Secondary } from '../../model/secondary';
 import { School } from '../../model/school';
 
 @Component({
-  selector: 'app-pre-primary',
-  templateUrl: './pre-primary.component.html',
-  styleUrls: ['./pre-primary.component.scss']
+  selector: 'app-secondary',
+  templateUrl: './secondary.component.html',
+  styleUrls: ['./secondary.component.scss']
 })
+export class SecondaryComponent implements OnInit, AfterContentInit {
 
-export class PrePrimaryComponent implements OnInit, AfterContentInit {
-
-  prePrimaryAsync: PrePrimary;
+ 
+  secondaryAsync: Secondary;
   id: Number;
   school: School;
-  prePrimaryLocal: PrePrimary;
+  secondaryLocal: Secondary;
   remSeats: number;
-  prePrimary: boolean = true;
+  secondary: boolean = true;
 
   public bar_ChartData = [];
   public pie_ChartData = [
@@ -62,38 +62,42 @@ export class PrePrimaryComponent implements OnInit, AfterContentInit {
 
 
   constructor(private _activatedRoute: ActivatedRoute,
-    private prePrimaryService: PrePrimaryService) {
+    private secondaryService: SecondaryService) {
 
     this.school = JSON.parse(localStorage.getItem('school'));
+   
+    
   }
 
   ngOnInit() {
 
     this.id = this._activatedRoute.snapshot.params.id;
+    console.log('ID: ', this.id);
     this.getSchool(this.id);
    
   }
 
   ngAfterContentInit(){
 
-    this.prePrimaryLocal = JSON.parse(localStorage.getItem('preprimary'));
+    this.secondaryLocal = JSON.parse(localStorage.getItem('secondary'));
    
     this.bar_ChartData = [['Students', 'Seats'],
-    ['Total Seats ('+ this.prePrimaryLocal.pre_primary_school_seats_count + ')', this.prePrimaryLocal.pre_primary_school_seats_count],
-    ['Applied ('+ this.prePrimaryLocal.pre_primary_school_students_applied_count + ')', this.prePrimaryLocal.pre_primary_school_students_applied_count],
-    ['Accepted ('+ this.prePrimaryLocal.pre_primary_school_students_accepted_count + ')', this.prePrimaryLocal.pre_primary_school_students_accepted_count]];
+    ['Total Seats ('+ this.secondaryLocal.secondary_school_seats_count + ')', this.secondaryLocal.secondary_school_seats_count],
+    ['Applied ('+ this.secondaryLocal.secondary_school_students_applied_count + ')', this.secondaryLocal.secondary_school_students_applied_count],
+    ['Accepted ('+ this.secondaryLocal.secondary_school_students_accepted_count + ')', this.secondaryLocal.secondary_school_students_accepted_count]];
     
 
-    this.remSeats = this.prePrimaryLocal.pre_primary_school_seats_count - this.prePrimaryLocal.pre_primary_school_students_accepted_count;
+    this.remSeats = this.secondaryLocal.secondary_school_seats_count - this.secondaryLocal.secondary_school_students_accepted_count;
     console.log('REM SEATS: ', this.remSeats);
   }
-   getSchool(id: Number) {
 
-    this.prePrimaryService.getPrePrimarySchoolById(this.id).subscribe(data => {
-      this.prePrimaryAsync = data;
-     localStorage.setItem('preprimary',JSON.stringify(this.prePrimaryAsync));
+   getSchool(id: Number) {
+console.log('ENTEREDD!!!');
+    this.secondaryService.getSecondarySchoolById(this.id).subscribe(data => {
+      console.log('Data: ', data);
+      this.secondaryAsync = data;
+     localStorage.setItem('secondary',JSON.stringify(this.secondaryAsync));
     });
     
   }
-
 }

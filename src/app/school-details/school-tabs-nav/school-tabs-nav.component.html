@@ -10,19 +10,19 @@
                         <span matBadgeColor="warn" matBadge="60" matBadgeOverlap="false"> Pre-Primary </span></a>
                   </li>
                   <li class="side-nav-item  is-locked">
-                     <a class=" is-locked" href=" ">
+                     <a [ngClass]="primaryFlag===undefined?'is-locked':''" [routerLink]="['/school/primary',school?.school_primary_school_ref_id]">
                         <span matBadgeColor="cool" matBadge="0" matBadgeOverlap="false">Primary</span></a>
                   </li>
                   <li class="side-nav-item  is-locked">
-                     <a class=" is-locked" href=" ">
+                     <a [ngClass]="middleFlag===undefined?'is-locked':''" [routerLink]="['/school/middle',school?.school_middle_school_ref_id]">
                         <span matBadgeColor="cool" matBadge="0" matBadgeOverlap="false">Middle</span></a>
                   </li>
                   <li class="side-nav-item">
-                     <a class="is-locked" href=" ">
+                     <a [ngClass]="secondaryFlag===undefined?'is-locked':''" [routerLink]="['/school/secondary',school?.school_secondary_school_ref_id]">
                         <span matBadgeColor="warn" matBadge="40" matBadgeOverlap="false">Secondary</span></a>
                   </li>
                   <li class="side-nav-item is-locked">
-                     <a class=" is-locked" href=" ">
+                     <a [ngClass]="seniorSecondaryFlag===undefined?'is-locked':''" [routerLink]="['/school/senior-secondary',school?.school_senior_secondary_school_ref_id]">
                         <span matBadgeColor="cool" matBadge="0" matBadgeOverlap="false">Senior Secondary</span></a>
                   </li>
                </ul>

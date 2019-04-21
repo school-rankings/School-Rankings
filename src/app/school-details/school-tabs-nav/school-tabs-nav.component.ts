@@ -10,6 +10,11 @@ import { School } from '../../model/school';
 export class SchoolTabsNavComponent implements OnInit {
 
   @Input() prePrimaryFlag: boolean;
+  @Input() primaryFlag: boolean;
+  @Input() middleFlag: boolean;
+  @Input() secondaryFlag: boolean;
+  @Input() seniorSecondaryFlag: boolean;
+
   school: School;
   constructor() {
     

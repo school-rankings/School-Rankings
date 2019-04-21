@@ -29,6 +29,10 @@ import { SchoolTabsNavComponent } from './school-details/school-tabs-nav/school-
 import { LoginComponent } from './login/login.component';
 import { LoginDirective } from './directives/login/login.directive';
 import { AuthGuard } from './auth/_guards/auth.guard';
+import { PrimaryComponent } from './school-details/primary/primary.component';
+import { MiddleComponent } from './school-details/middle/middle.component';
+import { SecondaryComponent } from './school-details/secondary/secondary.component';
+import { SeniorSecondaryComponent } from './school-details/senior-secondary/senior-secondary.component';
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import { AuthGuard } from './auth/_guards/auth.guard';
     QuickStatsComponent,
     SchoolTabsNavComponent,
     LoginComponent,
-    LoginDirective
+    LoginDirective,
+    PrimaryComponent,
+    MiddleComponent,
+    SecondaryComponent,
+    SeniorSecondaryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,21 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SettingsService } from '../../_shared_services/settings.service';
 import { Observable } from 'rxjs';
-import { PrePrimaryModel } from '../../model/pre-primary';
+import { PrimaryModel } from '../../model/primary';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class PrePrimaryService {
-
+export class PrimaryService {
   private schoolsUrl: string;
 
   constructor(private http: HttpClient, private settings: SettingsService) {
-    this.schoolsUrl = `${this.settings.getApiUrl()}preprimary/preprimaryschools/`;
+    this.schoolsUrl = `${this.settings.getApiUrl()}primary/primaryschools/`;
   }
 
-  getPrePrimarySchoolById(id: Number): Observable<PrePrimaryModel> {
+  getPrimarySchoolById(id: Number): Observable<PrimaryModel> {
     const url = `${this.schoolsUrl}` + id;
-    return this.http.get<PrePrimaryModel>(url);
+    return this.http.get<PrimaryModel>(url);
   }
-
 }
